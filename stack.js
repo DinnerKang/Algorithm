@@ -1,47 +1,51 @@
 // /https://www.acmicpc.net/problem/10828
-var readline = require('readline');
-
-var r1 = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-var input_number = null,
+var readline = require('readline'),
+    r1 = readline.createInterface(process.stdin, process.stdout),
+    input_number,
     arr = [];
-r1.on('line', function (line) {
-    if (input_number == null) {
-        input_number = line;
-    } else {
-        var command = line.split(' ')[0];
-        var arr_len = arr.length;
-        if (command == 'push') {
-            arr.push(line.split(' ')[1]);
-        } else if (command == 'pop') {
-            if (arr_len == 0) {
-                console.log(-1);
-            } else {
-                console.log(arr.pop());
-            }
-        } else if (command == 'size') {
-            console.log(arr_len);
-        } else if (command == 'empty') {
-            if (arr_len == 0) {
-                console.log(1);
-            } else {
-                console.log(0);
-            }
-        } else if (command == 'top') {
-            if (arr_len == 0) {
-                console.log(-1);
-            } else {
-                console.log(arr[arr_len - 1]);
-            }
-        }
-        input_number--;
-        if (input_number == 0) {
-            r1.close();
-        }
-    }
+
+function stackPush(data) {
+    arr.push(data);
+}
+
+function stackPop() {
+    arr.length == 0 ? console.log(-1) : console.log(arr.pop());
+}
+
+function stackSize() {
+    console.log(arr.length);
+}
+
+function stackEmpty() {
+    arr.length == 0 ? console.log(1) : console.log(0);
+}
+
+function stackTop() {
+    arr.length == 0 ? console.log(-1) : console.log(arr[arr.length - 1]);
+}
+
+r1.question('반복할 횟수 : ', function (ans) {
+    input_number = Number(ans);
 });
+
+r1.on('line', function (line) {
+    var command = line.split(' ')[0];
+    if (command == 'push') {
+        stackPush(line.split(' ')[1]);
+    } else if (command == 'pop') {
+        stackPop();
+    } else if (command == 'size') {
+        stackSize();
+    } else if (command == 'empty') {
+        stackEmpty();
+    } else if (command == 'top') {
+        stackTop();
+    }
+    command = null;
+    input_number--;
+    if (input_number == 0) r1.close();
+});
+
 r1.on('close', function () {
     process.exit();
 });
