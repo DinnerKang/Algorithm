@@ -30,7 +30,7 @@ r1.on('close', function () {
     process.exit();
 });
 
-/* 백준 디버그용
+// 백준 디버그용
 var fs = require('fs');
 var stdin = fs.readFileSync('/dev/stdin', 'utf8');
 var input = stdin.match(/[^\r\n]+/g);
@@ -41,7 +41,7 @@ var ans = parseInt(input[0], 10),
     five=0,
     three = 0;
 
-while(true){
+    while(true){
     if(ans%5==0){
         five = ans/5;
         break;
@@ -49,10 +49,10 @@ while(true){
     ans = ans -3;
     three = three +1;
     if(ans<0) break;
-}
+    }
     if(ans>=0){
         result = five + three;
         console.log(result);
     }else{
         console.log(-1);
-    }*/
+    }
