@@ -15,7 +15,7 @@ r1.question('입력 : ', function (n) {
         data[0] = ans[0];
         temp = data[0];
         for(i=1; i<n; i++){
-            data[i] = Math.max(data[i-1]+ans[i],ans[i] + ans[i-1]);
+            data[i] = Math.max(data[i-1]+ans[i],ans[i]);
             temp = Math.max(data[i], temp);
         }
         console.log(temp);
@@ -43,7 +43,7 @@ for(var i=0; i<n; i++){
 data[0] = ans[0];
 temp = data[0];
 for(i=1; i<n; i++){
-    data[i] = Math.max(data[i-1]+ans[i],ans[i] + ans[i-1]);
+    data[i] = Math.max(data[i-1]+ans[i],ans[i]);
     temp = Math.max(data[i], temp);
 }
 console.log(temp);
