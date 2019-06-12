@@ -16,6 +16,7 @@ r1.question('입력 : ', function (n) {
         temp = data[0];
         for(i=1; i<n; i++){
             data[i] = Math.max(data[i-1]+ans[i],ans[i]);
+            console.log(data[i], temp);
             temp = Math.max(data[i], temp);
         }
         console.log(temp);
@@ -27,7 +28,7 @@ r1.on('close', function () {
 });
 
 
-// 백준 디버그용
+/*백준 디버그용
 var fs = require('fs');
 var stdin = fs.readFileSync('/dev/stdin', 'utf8');
 var input = stdin.match(/[^\r\n]+/g);
@@ -46,4 +47,4 @@ for(i=1; i<n; i++){
     data[i] = Math.max(data[i-1]+ans[i],ans[i]);
     temp = Math.max(data[i], temp);
 }
-console.log(temp);
+console.log(temp);*/
